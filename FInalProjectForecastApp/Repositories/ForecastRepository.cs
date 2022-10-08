@@ -7,6 +7,7 @@ using ForecastApp.Config;
 using ForecastApp.OpenWeatherMapModels;
 using Newtonsoft.Json;
 using RestSharp;
+using RestSharp.Authenticators;
 using Newtonsoft.Json.Linq;
 using Microsoft.VisualBasic;
 using System.Text.Json.Serialization;
@@ -23,7 +24,7 @@ namespace ForecastApp.Repositories
             string IDOWeather = Constants.OPEN_WEATHER_APPID;
             // Connection String
             var client = new RestClient($"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={IDOWeather}");
-            var request = new RestRequest(Method.GET);
+            var request = new RestRequest("api/item/", Method.Get);
             IRestResponse response = (IRestResponse)client.Execute(request);
 
             if (response.IsSuccessful)
