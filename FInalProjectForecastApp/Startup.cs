@@ -9,14 +9,20 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace FInalProjectForecastApp
 {
     public class Startup
     {
+        //private object app;
+        //app.UseCookiePolicy;
+
         public Startup(IConfiguration configuration)
         {
+            //app.UseCookiePolicy();
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -26,9 +32,15 @@ namespace FInalProjectForecastApp
         {
 
             //
+            // Sets the display of the Cookie Consent banner (/Pages/Shared/_CookieConsentPartial.cshtml).
+            // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            services.Configure<CookiePolicyOptions>(options => {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+            });
             services.AddScoped<IForecastRepository, ForecastRepository>();
-            //services.AddControllersWithViews();
-
+            services.AddControllersWithViews();
+            
 
         }
 
@@ -45,6 +57,8 @@ namespace FInalProjectForecastApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCookiePolicy();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

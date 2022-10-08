@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ForecastApp</title>
 
+    <div class="container">
+        <main role="main" class="pb-3">@RenderBody()</main>
+        <partial name="_CookieConsentPartial" />
+    </div>
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />

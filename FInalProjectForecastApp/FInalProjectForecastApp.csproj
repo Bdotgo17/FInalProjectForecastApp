@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\ForecastApp\" />
     <None Remove="OpenWeatherMapModels\" />
     <None Remove="RestSharp" />
     <None Remove="Repositories\" />
@@ -13,7 +12,6 @@
     <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\ForecastApp\" />
     <Folder Include="OpenWeatherMapModels\" />
     <Folder Include="Repositories\" />
     <Folder Include="Config\" />
