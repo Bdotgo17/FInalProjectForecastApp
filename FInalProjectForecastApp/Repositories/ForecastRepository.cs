@@ -23,9 +23,9 @@ namespace ForecastApp.Repositories
         {
             string IDOWeather = Constants.OPEN_WEATHER_APPID;
             // Connection String
-            var client = new RestClient($"http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID={IDOWeather}");
-            var request = new RestRequest("api/item/", Method.Get);
-            IRestResponse response = (IRestResponse)client.Execute(request);
+            var client = new RestClient($"http://api.openweathermap.org/data/2.5");
+            var request = new RestRequest($"/weather?q={city}&units=metric&APPID={IDOWeather}", Method.Get);
+            RestResponse response = client.Execute(request);
 
             if (response.IsSuccessful)
             {
